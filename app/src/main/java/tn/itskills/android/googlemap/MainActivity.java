@@ -149,11 +149,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Sets the map type to be "hybrid"
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
         // set latitude & longitude values
         LatLng trichurRound = new LatLng(10.527549, 76.214487);
         LatLng infopark = new LatLng(10.268992, 76.354183);
+
+
+        LatLng iit = new LatLng(34.7288682, 10.7377031);
+
+        // add markers
+        mMap.addMarker(new MarkerOptions().position(iit)
+                .title("iit").snippet("welcome ").anchor(0, 0));
+
+        // add markers
+        mMap.addMarker(new MarkerOptions().position(trichurRound)
+                .title("trichurRound").snippet(":)").anchor(0, 0));
 
         // add markers
         mMap.addMarker(new MarkerOptions().position(trichurRound)
@@ -174,17 +185,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             return;
         }
 
+
         mMap.setMyLocationEnabled(true);
-
-        // select map type
-        // map.setMapType(googleMap.MAP_TYPE_SATELLITE);
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-        // change camera position
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 15));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 10));
 
         // activate compass cercle
         mMap.getUiSettings().setCompassEnabled(true);
@@ -192,6 +195,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.getUiSettings().setMapToolbarEnabled(true);
+
+        // change camera position
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 15));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 10));
+
+
 
         // show line beetween 2 markers
         //mMap.addPolyline(new PolylineOptions().add(infopark, trichurRound)
