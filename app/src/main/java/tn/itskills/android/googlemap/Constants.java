@@ -53,5 +53,7 @@ public final class Constants {
 
         BAY_AREA_LANDMARKS.put("Complexe des jeunes", new LatLng(34.7277239,10.7541822));
 
+        BAY_AREA_LANDMARKS.put("IIT", new LatLng(34.728865,10.7377102));
+
     }
 }
