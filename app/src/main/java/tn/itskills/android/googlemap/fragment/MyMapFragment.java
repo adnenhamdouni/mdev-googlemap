@@ -79,9 +79,6 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback,
      */
     private SharedPreferences mSharedPreferences;
 
-    // Buttons for kicking off the process of adding or removing geofences.
-    private Button mAddGeofencesButton;
-    private Button mRemoveGeofencesButton;
 
     synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity().getApplicationContext())
@@ -134,19 +131,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback,
 
     private void initView(View view) {
 
-        // Get the UI widgets.
-        mAddGeofencesButton = (Button) view.findViewById(R.id.add_geofences_button);
-        mAddGeofencesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-        mRemoveGeofencesButton = (Button) view.findViewById(R.id.remove_geofences_button);
-        mRemoveGeofencesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+
     }
 
 
@@ -172,19 +157,21 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback,
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         // set latitude & longitude values
-        LatLng trichurRound = new LatLng(10.527549, 76.214487);
-        LatLng infopark = new LatLng(10.268992, 76.354183);
+        LatLng sfax = new LatLng(34.7307118, 10.7606654);
+        LatLng infopark = new LatLng(34.7307118, 10.7552654);
 
         // add markers
-        mMap.addMarker(new MarkerOptions().position(trichurRound)
-                .title("trichurRound").snippet(":)").anchor(0, 0));
+        mMap.addMarker(new MarkerOptions().position(sfax)
+                .title("sfax").snippet(":)")
+                .icon(BitmapDescriptorFactory
+                        .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(infopark)
                 .title("infopark")
                 .snippet("This is my spot!")
                 .icon(BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                        .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
         // show  GPS location button
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -203,8 +190,8 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback,
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
         // change camera position
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 15));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(trichurRound, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sfax, 15));
+        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sfax, 10));
 
         // activate compass cercle
         mMap.getUiSettings().setCompassEnabled(true);
